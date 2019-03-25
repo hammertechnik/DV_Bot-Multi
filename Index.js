@@ -19,13 +19,15 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}serverinfo`){
     let sEmbed = new Discord.RichEmbed()
-    let sicon = message.guild.displayAvatarURL;
+    let sicon = message.guild.iconURL;
     
     .setDescription("Server Information")
     .setColor("#032359")
-    .addField("Server Name", bot.user.username)
+    .addField("Server Name", message.guild.name)
     .setThumbnail(sicon)
-    .addField("Created On", bot.user.createdAt)
+    .addField("Created On", message.guild.createdAt)
+    .addField("You Joined", message.member.joinedAt)
+    .addField("Total Members", message.guild.memberCount)
     .addField("Save Files");
     
     return message.channel.send(sEmbed);
